@@ -1,4 +1,10 @@
 MoviesApp::Application.routes.draw do
+  resources :actors
+
+  resources :movies
+
+  match "/movies/new", :to => "movies#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

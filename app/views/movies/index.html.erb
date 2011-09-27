@@ -1,0 +1,44 @@
+<h1>Movies</h1>
+
+<table id="moviesTable" class="tablesorter">
+  <thead>
+    <tr>
+      <th>Pic</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% @movies.each do |movie| %>
+    <tr>
+      <% if movie.image_url.nil? || movie.image_url == "" %>
+        <td></td>
+      <% else
+          thumbnail = image_tag movie.image_url, :alt => "The Lion King", :class => "moviethumbnail" %>
+        <td><%= link_to thumbnail, movie.image_url %></td>
+      <% end %>
+      <td><%= movie.title %></td>
+      <td><%= movie.year %></td>
+      <td><%= movie.director %></td>
+      <td><%= movie.description %></td>
+      <td><%= link_to 'Show', movie %></td>
+      <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+      <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+
+  </tbody>
+  <tfoot>
+    <tr><td><%= link_to 'New Movie', new_movie_path %></td></tr>
+  </tfoot>
+</table>
+
+<br />
+
+

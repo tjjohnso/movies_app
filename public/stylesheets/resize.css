@@ -1,0 +1,17 @@
+body {
+	margin: 0px;
+}
+
+#bg {
+ position: absolute;
+}
+
+#bgImage {
+	width: 100%;
+}
+
+#content {
+	position: relative;
+	z-index: 1;
+	padding:10px;
+}

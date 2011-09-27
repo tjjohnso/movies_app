@@ -4,11 +4,18 @@
   <title>MoviesApp</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "resize.js" %>
+	<%= javascript_include_tag "jquery-1.6.4.min"%>
+	<%= javascript_include_tag "jquery.tablesorter.min"%>
+  <%= javascript_include_tag "document.ready"%>
   <%= csrf_meta_tag %>
 </head>
-<body>
-
-<%= yield %>
-
+<body onresize="resizeImage()">
+	<div id="bg">
+		<%= image_tag( "gone2.png", :alt => "Gone With the Wind", :id => "bgImage" ) %>
+	</div>
+	<div id="content">
+		<%= yield %>
+	</div>
 </body>
 </html>
