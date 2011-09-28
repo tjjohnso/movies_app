@@ -15,7 +15,10 @@
 		<%= image_tag( "gone2.png", :alt => "Gone With the Wind", :id => "bgImage" ) %>
 	</div>
 	<div id="content">
-		<%= yield %>
+    <%= render 'layouts/header' %>
+    <div id="real_content">
+		  <%= yield %>
+    </div>
 	</div>
 </body>
 </html>

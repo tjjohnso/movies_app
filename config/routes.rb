@@ -1,9 +1,20 @@
 MoviesApp::Application.routes.draw do
+
   resources :actors
 
   resources :movies
 
+  root :to => "pages#home"
+
   match "/movies/new", :to => "movies#new"
+
+  match "/help", :to => "pages#help"
+
+  match "/about", :to => "pages#about"
+
+  #get "pages/home"
+  #get "pages/help"
+  #get "pages/about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
