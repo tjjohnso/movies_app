@@ -6,6 +6,8 @@
   </div>
 </section>
 
+<input id="thumbnailToggle" type="checkbox" checked="true"/> Show Thumbnails
+
 <table id="moviesTable" class="tablesorter">
   <thead>
     <tr>
@@ -35,7 +37,7 @@
       <td><%= movie.description %></td>
       <td><%= link_to 'Show', movie %></td>
       <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-      <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Remove', movie, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
 <% end %>
 

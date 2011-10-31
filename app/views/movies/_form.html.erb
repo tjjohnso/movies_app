@@ -1,4 +1,4 @@
-<%= form_for(@movie) do |f| %>
+<%= form_for(@movie) do |movie_form| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
@@ -12,27 +12,43 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= movie_form.label :title %><br />
+    <%= movie_form.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
-    <%= f.text_field :year %>
+    <%= movie_form.label :year %><br />
+    <%= movie_form.text_field :year %>
   </div>
   <div class="field">
-    <%= f.label :director %><br />
-    <%= f.text_field :director %>
+    <%= movie_form.label :director %><br />
+    <%= movie_form.text_field :director %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= movie_form.label :description %><br />
+    <%= movie_form.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
+      <div id="imageInput" class="field">
+        <%= movie_form.label :image_url %><br />
+        <%= movie_form.text_field :image_url %>
+      </div>
+      <div id="imagePreview">
+        <div id="imagethumbnail"></div>
+        <input id="imagePreviewButton" type="button" value="See Preview"/>
+      </div>
   </div>
+  <%= movie_form.fields_for :roles do |role_form| %>
+
+    <div class="field" style="position:relative">
+      Character Name: <%= role_form.text_field :role_title %>
+      <%= role_form.fields_for :actor do |actor_form| %>
+        Actor Name: <%= actor_form.text_field :name %>
+      <% end %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= movie_form.submit %>
   </div>
 <% end %>
 

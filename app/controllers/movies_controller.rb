@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
   # GET /movies/new.xml
   def new
     @movie = Movie.new
+    @movie.roles.build.build_actor
 
     respond_to do |format|
       format.html # new.html.erb
@@ -74,6 +75,10 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
+    @roles = Role.find_all_by_movie_id(params[:id])
+    for role in @roles do
+      role.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(movies_url) }

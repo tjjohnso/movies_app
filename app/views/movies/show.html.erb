@@ -24,6 +24,18 @@
   <%= @movie.description %>
 </p>
 
+<p>
+  <b>Pic:</b>
+  <%= image_tag @movie.image_url %>
+</p>
+
+<p>
+  <b>Characters:</b>
+  <% @characters = Role.find_all_by_movie_id(params[:id]) %>
+  <% for character in @characters do %>
+    <br /> '<%= character.role_title %>'  played by <a href="/actors/<%= character.actor_id %>"><%= character.actor.name %></a>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
